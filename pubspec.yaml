@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   animated_text_kit: 
   persistent_bottom_nav_bar: 
+  firebase_core: ^2.24.2
 
 
 dev_dependencies:
