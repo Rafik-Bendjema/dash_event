@@ -1,5 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:dash_event/Feutures/auth/singIn/presentation/pages/SignIn.dart';
+import 'package:dash_event/Feutures/event/presentation/pages/EvnetPage.dart';
+import 'package:dash_event/Feutures/home/presentation/pages/homePage.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
@@ -19,13 +21,13 @@ class _SplashState extends State<Splash> {
   }
 
   void fading() async {
-    Future.delayed(Duration(seconds: 1)).then((value) {
+    Future.delayed(const Duration(seconds: 1)).then((value) {
       setState(() {
         _opacity = 1;
       });
-      Future.delayed(Duration(seconds: 4)).then((value) => {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => SignInView()))
+      Future.delayed(const Duration(seconds: 4)).then((value) => {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const HomePage()))
           });
     });
   }
@@ -40,7 +42,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(color: Color(0xFFE3FFFA)),
+        decoration: const BoxDecoration(color: Color(0xFFE3FFFA)),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Center(
@@ -48,27 +50,27 @@ class _SplashState extends State<Splash> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AnimatedOpacity(
-                  duration: Duration(seconds: 3),
+                  duration: const Duration(seconds: 3),
                   opacity: _opacity,
                   child: Image.asset(
                     'assets/images/dash.png',
                     height: 250,
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               DefaultTextStyle(
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 55, 55, 55)),
+                    color: Color.fromARGB(255, 55, 55, 55)),
                 child: AnimatedTextKit(
                   repeatForever: false,
                   isRepeatingAnimation: false,
                   animatedTexts: [
                     TyperAnimatedText(
                       "Dash Events",
-                      speed: Duration(milliseconds: 200),
+                      speed: const Duration(milliseconds: 200),
                     )
                   ],
                 ),

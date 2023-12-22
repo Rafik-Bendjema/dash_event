@@ -2,6 +2,8 @@ import 'package:dash_event/Feutures/auth/singUp/presentation/pages/SignUp.dart';
 import 'package:flutter/material.dart';
 
 class SignInView extends StatefulWidget {
+  const SignInView({super.key});
+
   @override
   State<SignInView> createState() => _SignInViewState();
 }
@@ -23,8 +25,8 @@ class _SignInViewState extends State<SignInView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(50.0),
+            const Padding(
+              padding: EdgeInsets.all(50.0),
               child: Text(
                 "Sign in",
                 style: TextStyle(fontSize: 30),
@@ -32,22 +34,22 @@ class _SignInViewState extends State<SignInView> {
             ),
             TextField(
               controller: emailController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Email',
                 prefixIcon: Icon(Icons.email),
               ),
               keyboardType: TextInputType.emailAddress,
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextField(
               controller: passwordController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Password',
                 prefixIcon: Icon(Icons.lock),
               ),
               obscureText: true,
             ),
-            SizedBox(height: 32.0),
+            const SizedBox(height: 32.0),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
@@ -58,13 +60,13 @@ class _SignInViewState extends State<SignInView> {
                 style: TextStyle(fontSize: 16),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("still not having an account ?"),
+                const Text("still not having an account ?"),
                 TextButton(
                     onPressed: () {
                       Navigator.push(
@@ -72,7 +74,7 @@ class _SignInViewState extends State<SignInView> {
                           MaterialPageRoute(
                               builder: (context) => SignUpView()));
                     },
-                    child: Text(
+                    child: const Text(
                       "sing up",
                       style: TextStyle(color: Colors.purple),
                     ))
