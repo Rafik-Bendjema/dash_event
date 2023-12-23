@@ -1,3 +1,4 @@
+import 'package:dash_event/Feutures/auth/data/auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatelessWidget {
@@ -47,7 +48,10 @@ class SignUpView extends StatelessWidget {
             const SizedBox(height: 32.0),
             ElevatedButton(
               onPressed: () {
-                // TODO: Implement sign-up logic
+                Auth().createUserWithEmailAndPassword(
+                    email: emailController.text.trim(),
+                    password: passwordController.text.trim(),
+                    name: fullNameController.text.trim());
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 15),
