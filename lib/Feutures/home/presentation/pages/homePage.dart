@@ -11,11 +11,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late PersistentTabController _controller =
+  late final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildscreens() {
-    return [EventPage(), EventInfo()];
+    return [const EventPage(), const EventInfo()];
   }
 
   @override
@@ -24,15 +24,15 @@ class _HomePageState extends State<HomePage> {
       context,
       controller: _controller,
       screens: _buildscreens(),
-      backgroundColor: Color.fromARGB(255, 152, 230, 246),
+      backgroundColor: const Color.fromARGB(255, 152, 230, 246),
       items: [
         PersistentBottomNavBarItem(
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
             title: "home",
             activeColorPrimary: Colors.white,
             inactiveColorPrimary: Colors.grey),
         PersistentBottomNavBarItem(
-            icon: Icon(Icons.info),
+            icon: const Icon(Icons.info),
             title: "info",
             activeColorPrimary: Colors.white,
             inactiveColorPrimary: Colors.grey),

@@ -1,7 +1,4 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:dash_event/Feutures/auth/singIn/presentation/pages/SignIn.dart';
-import 'package:dash_event/Feutures/event/presentation/pages/EvnetPage.dart';
-import 'package:dash_event/Feutures/home/presentation/pages/homePage.dart';
 import 'package:dash_event/widget_tree.dart';
 import 'package:flutter/material.dart';
 
@@ -16,26 +13,29 @@ class _SplashState extends State<Splash> {
   double _opacity = 0;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fading();
   }
 
   void fading() async {
     Future.delayed(const Duration(seconds: 1)).then((value) {
-      setState(() {
-        _opacity = 1;
+      if (mounted) {
+        setState(() {
+          _opacity = 1;
+        });
+      }
+
+      Future.delayed(const Duration(seconds: 4)).then((value) {
+        if (mounted) {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const WidgetTree()));
+        }
       });
-      Future.delayed(const Duration(seconds: 4)).then((value) => {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const WidgetTree()))
-          });
     });
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 

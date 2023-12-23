@@ -1,0 +1,24 @@
+{
+    "Questions" : [
+        {
+            "question" : "who is dash" , 
+            "answer" : "dash is the mascot of flutter"
+        },
+        {
+            "question" : "what is the name of the event " , 
+            "answer" : "the name of the event is Dash's Code Quest Adventure"
+        },
+        {
+            "question" : "where this event going to be" , 
+            "answer" : "in flutter world behind ESI"
+        },
+        {
+            "question" : "when" , 
+            "answer" : "we will annoonce it very soon"
+        },
+        {
+            "question" : "can i join ?" , 
+            "answer" : "if we ever said no ... kill us"
+        }
+    ]
+}

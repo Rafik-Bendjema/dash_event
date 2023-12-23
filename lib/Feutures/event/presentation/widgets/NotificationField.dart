@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../pages/EvnetPage.dart';
+
 class NotioficationField extends StatefulWidget {
   const NotioficationField({super.key});
 
@@ -14,7 +16,11 @@ class _NotioficationFieldState extends State<NotioficationField> {
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       Text(
         "notification",
-        style: TextStyle(fontSize: 20),
+        style: TextStyle(
+            fontSize: 20,
+            color: isDark
+                ? const Color.fromARGB(255, 197, 197, 197)
+                : const Color.fromARGB(255, 63, 63, 63)),
       ),
       Container(
           padding: EdgeInsets.all(8),
