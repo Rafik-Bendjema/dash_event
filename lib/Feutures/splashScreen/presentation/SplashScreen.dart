@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:dash_event/Feutures/admin/presentation/pages/adminView.dart';
 import 'package:dash_event/Feutures/auth/singIn/presentation/pages/SignIn.dart';
 import 'package:dash_event/Feutures/event/presentation/pages/EvnetPage.dart';
 import 'package:dash_event/Feutures/home/presentation/pages/homePage.dart';
