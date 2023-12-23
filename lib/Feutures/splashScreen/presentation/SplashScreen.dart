@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:dash_event/Feutures/auth/singIn/presentation/pages/SignIn.dart';
 import 'package:dash_event/Feutures/event/presentation/pages/EvnetPage.dart';
 import 'package:dash_event/Feutures/home/presentation/pages/homePage.dart';
+import 'package:dash_event/widget_tree.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
@@ -27,7 +28,7 @@ class _SplashState extends State<Splash> {
       });
       Future.delayed(const Duration(seconds: 4)).then((value) => {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const HomePage()))
+                MaterialPageRoute(builder: (context) => const WidgetTree()))
           });
     });
   }
