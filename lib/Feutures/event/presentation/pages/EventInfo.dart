@@ -42,7 +42,7 @@ class _EventInfoState extends State<EventInfo> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                     child: ListView(
                       reverse: true,
                       children: [
@@ -64,20 +64,21 @@ class _EventInfoState extends State<EventInfo> {
                   duration: const Duration(milliseconds: 200),
                   height: _containerheigh,
                   width: 360,
-                  color: Color.fromARGB(255, 152, 230, 246),
+                  color: const Color.fromARGB(255, 152, 230, 246),
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: ListView(
                       children: [
                         for (int i = 0; i < 5; i++)
                           Container(
-                              margin: EdgeInsets.symmetric(vertical: 5),
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
+                              margin: const EdgeInsets.symmetric(vertical: 5),
+                              padding: const EdgeInsets.all(10),
+                              decoration: const BoxDecoration(
                                   color: Colors.white,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
-                              child: Center(child: Text("who is dash ?"))),
+                              child:
+                                  const Center(child: Text("who is dash ?"))),
                       ],
                     ),
                   ),
@@ -89,13 +90,13 @@ class _EventInfoState extends State<EventInfo> {
             height: 10,
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color.fromARGB(255, 152, 230, 246),
             ),
             height: 50,
             child: TextField(
               textAlign: TextAlign.center,
-              decoration: InputDecoration(hintText: "click to Ask Dash"),
+              decoration: const InputDecoration(hintText: "click to Ask Dash"),
               readOnly: true,
               onTap: () {
                 setState(() {
