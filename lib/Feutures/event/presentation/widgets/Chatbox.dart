@@ -25,8 +25,8 @@ class _ChatBoxState extends State<ChatBox> {
           alignment: Alignment.centerLeft,
           child: Text(
             widget.sender,
-            style: TextStyle(
-                color: Color.fromARGB(255, 215, 215, 215), fontSize: 20),
+            style:
+                TextStyle(color: Color.fromARGB(255, 81, 81, 81), fontSize: 20),
           ),
         ),
       ),
