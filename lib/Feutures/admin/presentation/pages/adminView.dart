@@ -1,4 +1,7 @@
+import 'package:dash_event/Feutures/admin/presentation/pages/Attendees.dart';
 import 'package:dash_event/Feutures/admin/presentation/pages/EventTime.dart';
+import 'package:dash_event/Feutures/admin/presentation/pages/Notifications.dart';
+import 'package:dash_event/Feutures/admin/presentation/pages/Questions.dart';
 import 'package:dash_event/Feutures/admin/presentation/widgets/AdminTile.dart';
 import 'package:dash_event/Feutures/event/presentation/pages/EvnetPage.dart';
 import 'package:dash_event/Feutures/event/presentation/widgets/CountDown.dart';
@@ -100,11 +103,30 @@ class _AdminViewState extends State<AdminView> {
                   AdminTile(
                       image: "dash2.png",
                       title: "notifications",
-                      inclick: () {}),
+                      inclick: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Notifications()));
+                      }),
                   AdminTile(
-                      image: "dash3.png", title: "attendees", inclick: () {}),
+                      image: "dash3.png",
+                      title: "attendees",
+                      inclick: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Attendees()));
+                      }),
                   AdminTile(
-                      image: "dash4.png", title: "questions", inclick: () {}),
+                      image: "dash4.png",
+                      title: "questions",
+                      inclick: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Questions()));
+                      }),
                 ],
               ),
             ),

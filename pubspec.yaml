@@ -42,6 +42,7 @@ dependencies:
   firebase_auth: ^4.15.3
   firebase_analytics: ^10.7.4
   firebase_crashlytics: ^3.4.8
+  faker:
 
 
 dev_dependencies:

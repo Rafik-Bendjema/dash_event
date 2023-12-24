@@ -1,3 +1,4 @@
+import 'package:dash_event/Feutures/admin/presentation/pages/adminView.dart';
 import 'package:dash_event/Feutures/auth/singUp/presentation/pages/SignUp.dart';
 import 'package:dash_event/Feutures/home/presentation/pages/homePage.dart';
 import 'package:dash_event/Feutures/splashScreen/presentation/SplashScreen.dart';
@@ -17,7 +18,6 @@ class _WidgetTreeState extends State<WidgetTree> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
   }
 
-
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
@@ -31,7 +31,7 @@ class _WidgetTreeState extends State<WidgetTree> with WidgetsBindingObserver {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
           if (snapshot.hasData) {
-            return const HomePage();
+            return const AdminView();
           } else {
             return SignUpView();
           }
