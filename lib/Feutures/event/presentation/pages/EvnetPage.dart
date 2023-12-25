@@ -1,3 +1,4 @@
+import 'package:dash_event/Feutures/auth/data/auth.dart';
 import 'package:dash_event/Feutures/event/presentation/widgets/CountDown.dart';
 import 'package:dash_event/Feutures/event/presentation/widgets/NotificationField.dart';
 import 'package:flutter/material.dart';
@@ -37,8 +38,9 @@ class _EventPageState extends State<EventPage> {
                     decoration: BoxDecoration(
                         color: isDark
                             ? Colors.black
-                            : Color.fromARGB(255, 145, 140, 140),
-                        borderRadius: BorderRadius.all(Radius.circular(50))),
+                            : const Color.fromARGB(255, 145, 140, 140),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(50))),
                   ),
                   AnimatedPositioned(
                     duration: const Duration(milliseconds: 200),
@@ -53,7 +55,7 @@ class _EventPageState extends State<EventPage> {
                         left: 10,
                         child: Container(
                           width: 25,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle, color: Colors.yellow),
                         ),
                       ),
@@ -72,19 +74,19 @@ class _EventPageState extends State<EventPage> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           Image.asset(
             'assets/images/dash.png',
             height: 250,
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           Column(
             children: [
-              Text(
+              const Text(
                 "Dash",
                 style: TextStyle(color: Color(0Xff23DCFF), fontSize: 36),
               ),
@@ -98,28 +100,30 @@ class _EventPageState extends State<EventPage> {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           SizedBox(
               width: MediaQuery.of(context).size.width * 0.90,
-              child: CountDown()),
-          SizedBox(
+              child: const CountDown()),
+          const SizedBox(
             height: 15,
           ),
           SizedBox(
               width: MediaQuery.of(context).size.width * 0.90,
-              child: NotioficationField()),
+              child: const NotioficationField()),
           Expanded(
               child: Center(
-            child: Container(
+            child: SizedBox(
               height: 70,
               child: ElevatedButton(
-                child: Text(
+                child: const Text(
                   "sing out",
                   style: TextStyle(fontSize: 20, color: Color(0Xff23DCFF)),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  await Auth().signOut();
+                },
               ),
             ),
           ))

@@ -5,15 +5,16 @@ class UserModel {
   final int? age;
   final String? profilePic;
   final Gender? gender;
+  final bool? isadmin;
 
-  UserModel({
-    this.uid,
-    this.name,
-    this.email,
-    this.age,
-    this.profilePic,
-    this.gender,
-  });
+  UserModel(
+      {this.uid,
+      this.name,
+      this.email,
+      this.age,
+      this.profilePic,
+      this.gender,
+      this.isadmin});
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
@@ -34,6 +35,7 @@ class UserModel {
       'age': age,
       'profile_pic': profilePic,
       'gender': gender,
+      'isadmin': isadmin
     };
   }
 }

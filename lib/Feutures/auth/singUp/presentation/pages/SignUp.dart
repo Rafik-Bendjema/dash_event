@@ -48,77 +48,37 @@ class SignUpView extends StatelessWidget {
             ),
             const SizedBox(height: 32.0),
             ElevatedButton(
-              onPressed: () {
-                try {
-                  Auth().createUserWithEmailAndPassword(
-                      email: emailController.text.trim(),
-                      password: passwordController.text.trim(),
-                      name: fullNameController.text.trim());
-                } on FirebaseAuthException catch (e) {
-                  if (e.code == 'weak-password') {
-                    showDialog(
-                        context: context,
-                        builder: (context) => Dialog(
-                              child: Container(
-                                padding: const EdgeInsets.all(20),
-                                child: Center(
-                                  child: Column(children: [
-                                    const Text("weak password"),
-                                    SizedBox(
-                                      height: 10,
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Text("back")),
-                                    )
-                                  ]),
-                                ),
-                              ),
-                            ));
-                  } else if (e.code == 'email-already-in-use') {
-                    showDialog(
-                        context: context,
-                        builder: (context) => Dialog(
-                              child: Container(
-                                padding: const EdgeInsets.all(20),
-                                child: Center(
-                                  child: Column(children: [
-                                    const Text("email already taken"),
-                                    SizedBox(
-                                      height: 10,
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Text("back")),
-                                    )
-                                  ]),
-                                ),
-                              ),
-                            ));
-                  }
-                } catch (e) {
+              onPressed: () async {
+                String? status;
+                status = await Auth().createUserWithEmailAndPassword(
+                    email: emailController.text.trim(),
+                    password: passwordController.text.trim(),
+                    name: fullNameController.text.trim());
+                if (status != null) {
                   showDialog(
                       context: context,
                       builder: (context) => Dialog(
-                            child: Container(
-                              padding: const EdgeInsets.all(20),
-                              child: Center(
-                                child: Column(children: [
-                                  Text(e.toString()),
-                                  SizedBox(
-                                    height: 10,
-                                    child: ElevatedButton(
+                              child: Container(
+                            width: 200,
+                            height: 200,
+                            padding: const EdgeInsets.all(20),
+                            child: Center(
+                              child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(status!),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    ElevatedButton(
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },
-                                        child: const Text("back")),
-                                  )
-                                ]),
-                              ),
+                                        child: const Text("back"))
+                                  ]),
                             ),
-                          ));
+                          )));
                 }
               },
               style: ElevatedButton.styleFrom(

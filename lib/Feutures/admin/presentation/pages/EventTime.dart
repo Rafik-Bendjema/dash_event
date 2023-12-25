@@ -20,7 +20,7 @@ class _EventTimeState extends State<EventTime> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text("selected date : ${_time.toString().split(" ")[0]}"),
                   ElevatedButton(
@@ -41,13 +41,24 @@ class _EventTimeState extends State<EventTime> {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text("selected time : ${_time.toString().split(" ")[1]}"),
                   ElevatedButton(
-                      onPressed: () {
-                        showTimePicker(
+                      onPressed: () async {
+                        TimeOfDay? timing;
+                        timing = await showTimePicker(
                             context: context, initialTime: TimeOfDay.now());
+                        print("this is the time choosing ${timing.toString()}");
+                        if (timing != null) {
+                          setState(() {
+                            _time =
+                                DateTime(_time.year, _time.month, _time.day);
+                            _time = _time.add(Duration(
+                                hours: timing!.hour, minutes: timing.minute));
+                            print("time after editing ${_time.toString()}");
+                          });
+                        }
                       },
                       child: const Text("edit"))
                 ],

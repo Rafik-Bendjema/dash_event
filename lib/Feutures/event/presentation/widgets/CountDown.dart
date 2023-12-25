@@ -28,11 +28,13 @@ class _CountDownState extends State<CountDown> {
     super.dispose();
   }
 
-  final DateTime _time = DateTime(2024, 1, 2, 00, 00);
+  final DateTime _time = DateTime.now();
 
   List<int> getDifference() {
     Duration difference = _time.difference(DateTime.now());
-
+    if (difference <= Duration.zero) {
+      return [0, 0, 0];
+    }
     int days = difference.inDays;
     int hours = difference.inHours % 24;
     int minutes = difference.inMinutes % 60;
