@@ -43,7 +43,7 @@ dependencies:
   firebase_analytics: ^10.7.4
   firebase_crashlytics: ^3.4.8
   faker:
-
+  http: 
 
 dev_dependencies:
   flutter_test:

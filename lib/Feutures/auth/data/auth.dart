@@ -16,8 +16,7 @@ class Auth {
         .collection("Users")
         .where("id", isEqualTo: Auth().currentUser!.uid)
         .get();
-      _setUserModel = UserModel.fromMap(value.docs.first.data());
-    
+    _setUserModel = UserModel.fromMap(value.docs.first.data());
   }
 
   Future<void> signInWithEMailAndPassword(
@@ -26,9 +25,9 @@ class Auth {
     await setuser();
   }
 
-  Future<void> resetPass() async {
+  /*Future<void> resetPass() async {
     await _auth.sendPasswordResetEmail(email: "drboucharebsarah@gmail.com");
-  }
+  }*/
 
   Future<void> createUserWithEmailAndPassword({
     required String email,
@@ -39,14 +38,21 @@ class Auth {
         email: email, password: password);
     await _auth.currentUser!.updateDisplayName(name);
     UserModel user = UserModel(
-      uid: _auth.currentUser!.uid,
-      name: name,
-      email: email,
-      profilePic: _auth.currentUser!.photoURL,
-      age: 0
-    );
+        uid: _auth.currentUser!.uid,
+        name: name,
+        email: email,
+        profilePic: "" /*_auth.currentUser!.photoURL*/,
+        age: 0);
     await _firestore.collection("users").add(user.toMap());
+
+    await incrementNbrAtt();
     _setUserModel = user;
+  }
+
+  Future<void> incrementNbrAtt() async {
+    DocumentReference eventDocRef =
+        _firestore.collection("Event").doc("6pOFnma5iPrllzbf2wiP");
+    await eventDocRef.update({"nbr_attendees": FieldValue.increment(1)});
   }
 
   Future<void> signOut() async {

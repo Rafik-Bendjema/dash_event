@@ -1,4 +1,5 @@
 import 'package:dash_event/Feutures/auth/data/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatelessWidget {
@@ -48,10 +49,77 @@ class SignUpView extends StatelessWidget {
             const SizedBox(height: 32.0),
             ElevatedButton(
               onPressed: () {
-                Auth().createUserWithEmailAndPassword(
-                    email: emailController.text.trim(),
-                    password: passwordController.text.trim(),
-                    name: fullNameController.text.trim());
+                try {
+                  Auth().createUserWithEmailAndPassword(
+                      email: emailController.text.trim(),
+                      password: passwordController.text.trim(),
+                      name: fullNameController.text.trim());
+                } on FirebaseAuthException catch (e) {
+                  if (e.code == 'weak-password') {
+                    showDialog(
+                        context: context,
+                        builder: (context) => Dialog(
+                              child: Container(
+                                padding: const EdgeInsets.all(20),
+                                child: Center(
+                                  child: Column(children: [
+                                    const Text("weak password"),
+                                    SizedBox(
+                                      height: 10,
+                                      child: ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("back")),
+                                    )
+                                  ]),
+                                ),
+                              ),
+                            ));
+                  } else if (e.code == 'email-already-in-use') {
+                    showDialog(
+                        context: context,
+                        builder: (context) => Dialog(
+                              child: Container(
+                                padding: const EdgeInsets.all(20),
+                                child: Center(
+                                  child: Column(children: [
+                                    const Text("email already taken"),
+                                    SizedBox(
+                                      height: 10,
+                                      child: ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("back")),
+                                    )
+                                  ]),
+                                ),
+                              ),
+                            ));
+                  }
+                } catch (e) {
+                  showDialog(
+                      context: context,
+                      builder: (context) => Dialog(
+                            child: Container(
+                              padding: const EdgeInsets.all(20),
+                              child: Center(
+                                child: Column(children: [
+                                  Text(e.toString()),
+                                  SizedBox(
+                                    height: 10,
+                                    child: ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text("back")),
+                                  )
+                                ]),
+                              ),
+                            ),
+                          ));
+                }
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 15),

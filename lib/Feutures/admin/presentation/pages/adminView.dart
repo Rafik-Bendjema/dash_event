@@ -1,8 +1,9 @@
 import 'package:dash_event/Feutures/admin/presentation/pages/Attendees.dart';
 import 'package:dash_event/Feutures/admin/presentation/pages/EventTime.dart';
-import 'package:dash_event/Feutures/admin/presentation/pages/Notifications.dart';
+import 'package:dash_event/Feutures/Email/presentation/pages/EmailPage.dart';
 import 'package:dash_event/Feutures/admin/presentation/pages/Questions.dart';
 import 'package:dash_event/Feutures/admin/presentation/widgets/AdminTile.dart';
+import 'package:dash_event/Feutures/auth/data/auth.dart';
 import 'package:dash_event/Feutures/event/presentation/pages/EvnetPage.dart';
 import 'package:dash_event/Feutures/event/presentation/widgets/CountDown.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class _AdminViewState extends State<AdminView> {
                   style: TextStyle(fontSize: 30, color: Color(0xFF23DCFF)),
                 ),
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
                     setState(() {
                       isDark = !isDark;
                     });
@@ -102,12 +103,12 @@ class _AdminViewState extends State<AdminView> {
                       }),
                   AdminTile(
                       image: "dash2.png",
-                      title: "notifications",
+                      title: "Emails",
                       inclick: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Notifications()));
+                                builder: (context) => const EmailPage()));
                       }),
                   AdminTile(
                       image: "dash3.png",
@@ -152,6 +153,21 @@ class _AdminViewState extends State<AdminView> {
             SizedBox(
                 width: MediaQuery.of(context).size.width * 0.90,
                 child: const CountDown()),
+            Expanded(
+                child: Center(
+              child: SizedBox(
+                height: 70,
+                child: ElevatedButton(
+                  child: const Text(
+                    "sing out",
+                    style: TextStyle(fontSize: 20, color: Color(0Xff23DCFF)),
+                  ),
+                  onPressed: () async {
+                    await Auth().signOut();
+                  },
+                ),
+              ),
+            ))
           ]),
         ),
       ),
